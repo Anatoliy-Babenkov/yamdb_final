@@ -24,7 +24,7 @@ python -m venv venv
 ```
 python manage.py migrate
 ```
-Запустить проект1:
+Запустить проект:
 ```
 Авторы:
 ```
