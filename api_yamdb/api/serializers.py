@@ -13,12 +13,12 @@ class ReviewSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         try:
-            Review.objects.create(**validated_data)
+            review = Review.objects.create(**validated_data)
         except IntegrityError:
             raise serializers.ValidationError(
                 'Нельзя оставить больше одного обзора.'
             )
-        return Review.objects.create(**validated_data)
+        return review
 
     class Meta:
         model = Review
