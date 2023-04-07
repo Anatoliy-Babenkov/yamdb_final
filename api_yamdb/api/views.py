@@ -1,9 +1,10 @@
+from django.contrib.auth.tokens import default_token_generator
 from django.db import IntegrityError
 from django.db.models import Avg
-from django.contrib.auth.tokens import default_token_generator
 from django.shortcuts import get_object_or_404
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
+from rest_framework import viewsets
 from rest_framework.decorators import action
 from rest_framework.filters import SearchFilter
 from rest_framework.permissions import IsAuthenticated
@@ -13,19 +14,17 @@ from rest_framework.status import HTTP_200_OK, HTTP_400_BAD_REQUEST
 from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet
 from rest_framework_simplejwt.tokens import RefreshToken
-from rest_framework import viewsets
-
 from reviews.models import Category, Genre, Review, Title
-from api.permissions import IsAdminOrReadOnly, IsAuthorOrReadOnly, IsAdmin
+from api.permissions import IsAdmin, IsAdminOrReadOnly, IsAuthorOrReadOnly
 from api.auth import send_confirmation_code
-from users.models import User
+from api.filters import TitleFilter
+from api.mixins import ListCreateDestroyViewSet
 from api.serializers import (
     GetJWTTokenSerializer, SignUpSerializer, UserRestrictedSerializer,
     UserSerializer, ReviewSerializer, CommentSerializer, CategorySerializer,
     GenreSerializer, TitleSerializer, TitleSerializerList
 )
-from api.filters import TitleFilter
-from api.mixins import ListCreateDestroyViewSet
+from users.models import User
 
 
 class CategoryViewSet(ListCreateDestroyViewSet):
