@@ -6,8 +6,8 @@ from users.models import username_validation
 
 
 class ReviewSerializer(serializers.ModelSerializer):
-    """Сериализатор для работы с отзывами.
-    """
+    """Сериализатор для работы с отзывами."""
+
     author = serializers.SlugRelatedField(slug_field='username',
                                           read_only=True)
 
@@ -26,8 +26,8 @@ class ReviewSerializer(serializers.ModelSerializer):
 
 
 class CommentSerializer(serializers.ModelSerializer):
-    """Сериализатор для комментариев.
-    """
+    """Сериализатор для комментариев."""
+
     author = serializers.SlugRelatedField(slug_field='username',
                                           read_only=True)
 
@@ -37,22 +37,21 @@ class CommentSerializer(serializers.ModelSerializer):
 
 
 class UserSerializer(serializers.ModelSerializer):
-    """Сериализатор модели User.
-    """
+    """Сериализатор модели User."""
+
     class Meta:
         model = User
         fields = ('username', 'email', 'first_name',
                   'last_name', 'bio', 'role')
 
     def validate_username(self, value):
-        """Проверка имени пользователя.
-        """
+        """Проверка имени пользователя."""
         return username_validation(value)
 
 
 class SignUpSerializer(serializers.Serializer):
-    """Сериализатор регистрации нового пользователя.
-    """
+    """Сериализатор регистрации нового пользователя."""
+
     username = serializers.CharField(max_length=150,
                                      required=True,
                                      validators=[username_validation, ])
@@ -62,8 +61,8 @@ class SignUpSerializer(serializers.Serializer):
 
 
 class UserRestrictedSerializer(UserSerializer):
-    """Сериализатор модели User для изменения данных аккаунтов.
-    """
+    """Сериализатор модели User для изменения данных аккаунтов."""
+
     username = serializers.CharField(max_length=150,
                                      required=True,
                                      validators=[username_validation, ])
@@ -76,8 +75,8 @@ class UserRestrictedSerializer(UserSerializer):
 
 
 class GetJWTTokenSerializer(serializers.Serializer):
-    """Сериализатор запроса JWT токена.
-    """
+    """Сериализатор запроса JWT токена."""
+
     username = serializers.CharField(max_length=150,
                                      required=True,
                                      validators=[username_validation])
@@ -86,8 +85,7 @@ class GetJWTTokenSerializer(serializers.Serializer):
 
 
 class CategorySerializer(serializers.ModelSerializer):
-    """Серилизатор для категорий.
-    """
+    """Серилизатор для категорий."""
 
     class Meta:
         model = Category
@@ -95,8 +93,7 @@ class CategorySerializer(serializers.ModelSerializer):
 
 
 class GenreSerializer(serializers.ModelSerializer):
-    """Серилизатор для жанров.
-    """
+    """Серилизатор для жанров."""
 
     class Meta:
         model = Genre
@@ -104,8 +101,8 @@ class GenreSerializer(serializers.ModelSerializer):
 
 
 class TitleSerializerList(serializers.ModelSerializer):
-    """Серилизатор для произведений.
-    """
+    """Серилизатор для произведений."""
+
     genre = GenreSerializer(many=True)
     category = CategorySerializer()
     rating = serializers.IntegerField(read_only=True)
@@ -117,8 +114,8 @@ class TitleSerializerList(serializers.ModelSerializer):
 
 
 class TitleSerializer(serializers.ModelSerializer):
-    """Серилизатор для произведений.
-    """
+    """Серилизатор для произведений."""
+
     genre = serializers.SlugRelatedField(many=True,
                                          queryset=Genre.objects.all(),
                                          slug_field='slug')
