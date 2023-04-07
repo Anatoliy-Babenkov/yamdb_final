@@ -1,8 +1,7 @@
-from rest_framework import serializers
 from django.db import IntegrityError
 from django.core.validators import validate_email
-
-from reviews.models import User, Category, Genre, Title, Comment, Review
+from rest_framework import serializers
+from reviews.models import Category, Comment, Genre, Review, Title, User
 from users.models import username_validation
 
 
