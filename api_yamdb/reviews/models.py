@@ -1,15 +1,14 @@
-from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
-
+from django.db import models
 from django.db.models import UniqueConstraint
 
 from users.models import User
-from .validators import year_validator
+from reviews.validators import year_validator
 
 
 class Category(models.Model):
-    """Модель для категорий.
-    """
+    """Модель для категорий."""
+
     name = models.CharField(verbose_name='Название группы',
                             max_length=200)
     slug = models.SlugField(verbose_name='Уникальный URL фрагмент',
@@ -21,8 +20,8 @@ class Category(models.Model):
 
 
 class Genre(models.Model):
-    """Модель для жанров.
-    """
+    """Модель для жанров."""
+
     name = models.CharField(verbose_name='Название жанра',
                             max_length=200)
     slug = models.SlugField(verbose_name='Уникальный URL фрагмент',
@@ -34,8 +33,8 @@ class Genre(models.Model):
 
 
 class Title(models.Model):
-    """Модель для произведений.
-    """
+    """Модель для произведений."""
+
     name = models.CharField(verbose_name='Название',
                             max_length=200)
     year = models.IntegerField(verbose_name='Дата выхода',
@@ -55,8 +54,8 @@ class Title(models.Model):
 
 
 class GenreTitle(models.Model):
-    """Связующая модель для жанров-произведений.
-    """
+    """Связующая модель для жанров-произведений."""
+
     title = models.ForeignKey(Title,
                               verbose_name='Произведение',
                               on_delete=models.CASCADE)
@@ -66,8 +65,8 @@ class GenreTitle(models.Model):
 
 
 class Review(models.Model):
-    """Класс для отзывов.
-    """
+    """Класс для отзывов."""
+
     text = models.TextField()
     title = models.ForeignKey(Title,
                               related_name='reviews',
@@ -89,8 +88,8 @@ class Review(models.Model):
 
 
 class Comment(models.Model):
-    """Класс для комментариев.
-    """
+    """Класс для комментариев."""
+
     text = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User,
