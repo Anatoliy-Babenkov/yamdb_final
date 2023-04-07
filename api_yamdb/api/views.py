@@ -15,10 +15,10 @@ from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet
 from rest_framework_simplejwt.tokens import RefreshToken
 from reviews.models import Category, Genre, Review, Title
-from api.permissions import IsAdmin, IsAdminOrReadOnly, IsAuthorOrReadOnly
 from api.auth import send_confirmation_code
 from api.filters import TitleFilter
 from api.mixins import ListCreateDestroyViewSet
+from api.permissions import IsAdmin, IsAdminOrReadOnly, IsAuthorOrReadOnly
 from api.serializers import (
     GetJWTTokenSerializer, SignUpSerializer, UserRestrictedSerializer,
     UserSerializer, ReviewSerializer, CommentSerializer, CategorySerializer,
