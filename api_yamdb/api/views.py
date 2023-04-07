@@ -3,9 +3,10 @@ from api.filters import TitleFilter
 from api.mixins import ListCreateDestroyViewSet
 from api.permissions import IsAdmin, IsAdminOrReadOnly, IsAuthorOrReadOnly
 from api.serializers import (
-    GetJWTTokenSerializer, SignUpSerializer, UserRestrictedSerializer,
-    UserSerializer, ReviewSerializer, CommentSerializer, CategorySerializer,
-    GenreSerializer, TitleSerializer, TitleSerializerList
+    CategorySerializer, CommentSerializer, GenreSerializer, 
+    GetJWTTokenSerializer, ReviewSerializer, SignUpSerializer,
+    TitleSerializer, TitleSerializerList, UserRestrictedSerializer, 
+    UserSerializer
 )
 from django.contrib.auth.tokens import default_token_generator
 from django.db import IntegrityError
