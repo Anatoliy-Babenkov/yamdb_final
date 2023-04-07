@@ -1,4 +1,4 @@
-https://github.com/Anatoliy-Babenkov/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg
+![yamdb Workflow Status](https://github.com/Anatoliy-Babenkov/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)
 ```
 #Проект YaMDb
 ```
