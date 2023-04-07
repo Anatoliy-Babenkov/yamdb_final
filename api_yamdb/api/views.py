@@ -2,12 +2,11 @@ from api.auth import send_confirmation_code
 from api.filters import TitleFilter
 from api.mixins import ListCreateDestroyViewSet
 from api.permissions import IsAdmin, IsAdminOrReadOnly, IsAuthorOrReadOnly
-from api.serializers import (
-    CategorySerializer, CommentSerializer, GenreSerializer, 
-    GetJWTTokenSerializer, ReviewSerializer, SignUpSerializer,
-    TitleSerializer, TitleSerializerList, UserRestrictedSerializer, 
-    UserSerializer
-)
+from api.serializers import (CategorySerializer, CommentSerializer,
+                             GenreSerializer, GetJWTTokenSerializer,
+                             ReviewSerializer, SignUpSerializer,
+                             TitleSerializer, TitleSerializerList,
+                             UserRestrictedSerializer, UserSerializer)
 from django.contrib.auth.tokens import default_token_generator
 from django.db import IntegrityError
 from django.db.models import Avg
