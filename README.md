@@ -109,4 +109,4 @@ python manage.py collectstatic
 
 <p align="center"><a href=https://github.com/Anatoliy-Babenkov>Бабенков Анатолий</a></p>
 
-<p color=Red>Ya</p>.Практикум
+<span style="color:red">Ya</span>.Практикум
